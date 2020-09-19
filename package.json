@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Shread1234/forbidden-planet-discord-bot#readme",
   "dependencies": {
     "discord.js": "^12.3.1",
+    "dotenv": "^8.2.0",
     "rcon-client": "^4.2.2"
   }
 }
