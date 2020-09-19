@@ -1,0 +1,23 @@
+{
+  "name": "discord-ark-bot",
+  "version": "1.0.0",
+  "description": "discord bot to work with forbidden servers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Shread1234/forbidden-planet-discord-bot.git"
+  },
+  "author": "Jamie Main",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Shread1234/forbidden-planet-discord-bot/issues"
+  },
+  "homepage": "https://github.com/Shread1234/forbidden-planet-discord-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "rcon-client": "^4.2.2"
+  }
+}
