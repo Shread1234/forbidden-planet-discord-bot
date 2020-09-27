@@ -2,8 +2,8 @@ require("dotenv").config()
 const { Rcon } = require("rcon-client")
 
 const rconCystalIsles = new Rcon({
-  host: process.env.RCON_CRYSTAL_ISLES_HOST,
-  port: process.env.RCON_CRYSTAL_ISLES_PORT,
+  host: process.env.RCON_CENTER_HOST,
+  port: process.env.RCON_CENTER_PORT,
   password: process.env.RCON_ALL_SERVERS_PASSWORD,
 })
 
@@ -15,6 +15,8 @@ async function giveSteamIDPoints(steamId, server) {
   console.log("connecting...")
   await server.connect()
   console.log("connected!")
+  const test = await server.send(`ScriptCommand TCsAR AddArcTotal ${steamId} 5000`)
+  console.log(test)
   server.end()
 }
 
