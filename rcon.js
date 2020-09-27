@@ -26,4 +26,4 @@ async function connectAndSendPoints(steamId) {
   }
 }
 
-module.exports = { giveSteamIDPoints, connectAndSendPoints }
+module.exports = { connectAndSendPoints }
