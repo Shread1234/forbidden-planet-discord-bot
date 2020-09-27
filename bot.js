@@ -1,25 +1,28 @@
-require("dotenv").config();
-const Discord = require("discord.js");
+require("dotenv").config()
+const { connectAndSendPoints } = require("./rcon")
+const Discord = require("discord.js")
 
-const bot = new Discord.Client();
+const bot = new Discord.Client()
 
-const botListeningChannel = "dev-test-steamid";
+const botListeningChannel = "dev-test-steamid"
 
 function correctMessageChannel(channelName) {
-  return channelName === botListeningChannel;
+  return channelName === botListeningChannel
 }
 
 bot.on("ready", () => {
-  console.log("Bot ready");
-});
+  console.log("Bot ready")
+})
 
-bot.on("message", (message) => {
+bot.on("message", async (message) => {
   if (!correctMessageChannel(message.channel.name)) {
-    return;
+    return
   }
-  if (message === "devTest") {
-    message.channel.send("test complete");
+  if (message.content.includes("devTest")) {
+    const steamId = message.content.split(" ")[1]
+    await connectAndSendPoints(steamId)
+    message.channel.send("test complete")
   }
-});
+})
 
-bot.login(process.env.DISCORD_TOKEN);
+bot.login(process.env.DISCORD_TOKEN)
