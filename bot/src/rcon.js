@@ -1,4 +1,4 @@
-require("dotenv").config()
+require("dotenv").config({path: `${__dirname}/../.env`})
 const { Rcon } = require("rcon-client")
 
 const rconCystalIsles = new Rcon({
