@@ -4,7 +4,11 @@
   "description": "discord bot to work with forbidden servers",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "set-up-db": "psql -f api/db/sql/setup.sql",
+    "migrate-db": "node-pg-migrate",
+    "set-up-and-migrate": "npm run set-up-db && node-pg-migrate up -m api/db",
+    "teardown-db": "psql -f api/db/sql/teardown.sql"
   },
   "repository": {
     "type": "git",
@@ -20,6 +24,8 @@
     "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "node-pg-migrate": "^5.8.1",
+    "pg": "^8.4.1",
     "rcon-client": "^4.2.2"
   }
 }
