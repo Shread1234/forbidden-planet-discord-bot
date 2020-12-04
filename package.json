@@ -9,9 +9,9 @@
     "migrate-db": "node-pg-migrate up -m ./api/db/migrations",
     "set-up-and-migrate": "npm run set-up-db && npm run migrate-db",
     "teardown-db": "psql -f api/db/sql/teardown.sql",
-    "migrate:prod": "DATABASE_URL=$(heroku config:get DATABASE_URL -a forbidden-planet) npm run migrate-db",
+    "migrate:prod": "DATABASE_URL=$(heroku config:get DATABASE_URL -a forbidden-planet)?ssl=true npm run migrate-db",
     "start": "node API/express/src/app.js",
-    "setup:prod": "DATABASE_URL=$(heroku config:get DATABASE_URL -a forbidden-planet) npm run set-up-db"
+    "setup:prod": "DATABASE_URL=$(heroku config:get DATABASE_URL -a forbidden-planet)?ssl=true npm run set-up-db"
   },
   "repository": {
     "type": "git",
