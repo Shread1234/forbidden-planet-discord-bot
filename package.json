@@ -10,7 +10,7 @@
     "set-up-and-migrate": "npm run set-up-db && npm run migrate-db",
     "teardown-db": "psql -f api/db/sql/teardown.sql",
     "migrate:prod": "DATABASE_URL=$(heroku config:get DATABASE_URL -a forbidden-planet) npm run migrate-db ",
-    "start": "node ./api/express/src/app.js"
+    "start": "node api/express/src/app.js"
   },
   "repository": {
     "type": "git",
