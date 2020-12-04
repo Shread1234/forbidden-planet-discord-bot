@@ -1,8 +1,6 @@
 const { Client } = require('pg')
 
-const client = new Client({ 
-  database: 'forbidden_planet'
-})
+const client = new Client()
 
 exports.selectSteamId = async (steamId) => {
   console.log(steamId)
