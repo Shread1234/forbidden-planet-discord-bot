@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "set-up-db": "psql -f api/db/sql/setup.sql",
-    "migrate-db": "node-pg-migrate",
-    "set-up-and-migrate": "npm run set-up-db && node-pg-migrate up -m api/db",
+    "migrate-db": "node-pg-migrate up -m ./api/db/migrations",
+    "set-up-and-migrate": "npm run set-up-db && npm run migrate-db",
     "teardown-db": "psql -f api/db/sql/teardown.sql"
   },
   "repository": {

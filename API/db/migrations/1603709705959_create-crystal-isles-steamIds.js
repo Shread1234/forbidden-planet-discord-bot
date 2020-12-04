@@ -1,7 +1,7 @@
 exports.up = pgm => {
     pgm.createTable('crystal_isles_steamids', {
-    steamId: 'varchar(1000)',
-    createdAt: {
+    steam_id: 'varchar(1000)',
+    created_at: {
       type: 'timestamp',
       notNull: true,
       default: pgm.func('current_timestamp'),
