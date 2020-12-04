@@ -29,6 +29,6 @@ exports.postSteamId = async (req, res) => {
     await insertSteamId(steamId)
     res.status(200).send(`Steam id ${steamId} was successfully added to the database.`)
   } catch (error) {
-    res.status(400).res.send(error)
+    res.status(400).send(error)
   }
 }
