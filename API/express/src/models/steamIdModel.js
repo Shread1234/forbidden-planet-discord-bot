@@ -13,7 +13,7 @@ exports.selectSteamId = async (steamId) => {
     return result
   } catch (error) {
     await client.end()
-    console.log(error)
+    throw new Error(error)
   }
 }
 
@@ -28,7 +28,7 @@ exports.insertSteamId = async (steamId) => {
     return result
   } catch (error) {
     await client.end()
-    console.log(error)
+    throw new Error(error)
   }
 }
 
