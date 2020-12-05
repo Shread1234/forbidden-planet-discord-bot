@@ -1,14 +1,16 @@
-const { Client } = require('pg')
+const { Client } = require("pg")
 
 const client = new Client()
 
 exports.selectSteamId = async (steamId) => {
   console.log(steamId)
-  console.log('connecting')
+  console.log("connecting")
   try {
     await client.connect()
-    console.log('connected')
-    const result = await client.query(`SELECT steamId FROM crystal_isles_steamids WHERE steamId = ${steamId};`)
+    console.log("connected")
+    const result = await client.query(
+      `SELECT steamId FROM crystal_isles_steamids WHERE steamId = ${steamId};`,
+    )
     await client.end()
     return result
   } catch (error) {
@@ -19,11 +21,13 @@ exports.selectSteamId = async (steamId) => {
 
 exports.insertSteamId = async (steamId) => {
   console.log(steamId)
-  console.log('connecting')
+  console.log("connecting")
   try {
     await client.connect()
-    console.log('connected')
-    const result = await client.query(`INSERT INTO crystal_isles_steamids (steam_id, created_at) VALUES ('${steamId}', NOW());`)
+    console.log("connected")
+    const result = await client.query(
+      `INSERT INTO crystal_isles_steamids (steam_id, created_at) VALUES ('${steamId}', NOW());`,
+    )
     await client.end()
     return result
   } catch (error) {
@@ -31,4 +35,3 @@ exports.insertSteamId = async (steamId) => {
     throw new Error(error)
   }
 }
-
