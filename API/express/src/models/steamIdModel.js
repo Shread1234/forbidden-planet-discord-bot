@@ -1,6 +1,9 @@
 const { Client } = require("pg")
 
-const client = new Client()
+const client = new Client({
+  connectionTimeoutMillis: 50_000,
+  connectionString: process.env.DATABASE_URL
+})
 
 exports.selectSteamId = async (steamId) => {
   console.log(steamId)
