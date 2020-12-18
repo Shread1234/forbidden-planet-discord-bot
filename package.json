@@ -6,10 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "set-up-db": "psql -f api/db/sql/setup.sql",
-    "migrate-db": "node-pg-migrate up -m ./api/db/migrations",
+    "migrate-db": "node-pg-migrate up -m api/db/migrations",
     "set-up-and-migrate": "npm run set-up-db && npm run migrate-db",
     "teardown-db": "psql -f api/db/sql/teardown.sql",
-    "migrate:prod": "DATABASE_URL=$(heroku config:get DATABASE_URL -a forbidden-planet)?ssl=true npm run migrate-db",
+    "migrate:prod": "NODE_TLS_REJECT_UNAUTHORIZED='0' DATABASE_URL=$(heroku config:get DATABASE_URL -a forbidden-planet)?ssl=true npm run migrate-db",
     "start": "node API/express/src/app.js",
     "setup:prod": "DATABASE_URL=$(heroku config:get DATABASE_URL -a forbidden-planet)?ssl=true npm run set-up-db"
   },
