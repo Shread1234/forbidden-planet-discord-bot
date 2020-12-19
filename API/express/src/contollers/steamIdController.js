@@ -9,7 +9,7 @@ exports.getSteamId = async (req, res) => {
   try {
     const selectResult = await selectSteamId(steamId)
     if(!selectResult.length) {
-    res.status(404).send('steamId not found')
+    res.status(200).send('steamId not found')
     return
     } else {
     res.status(200).send(selectResult)
