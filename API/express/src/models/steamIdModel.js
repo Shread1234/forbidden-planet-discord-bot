@@ -1,10 +1,10 @@
-require("dotenv").config({ path: `${__dirname}/../../../../.env`})
+require("dotenv").config({ path: `${__dirname}/../../../../.env` })
 const { Client } = require("pg")
 
 exports.selectSteamId = async (steamId) => {
   const client = new Client({
     connectionTimeoutMillis: 50000,
-    connectionString: process.env.DATABASE_URL
+    connectionString: process.env.DATABASE_URL,
   })
   console.log("connecting to db")
   try {
@@ -12,7 +12,7 @@ exports.selectSteamId = async (steamId) => {
     console.log("connected to db")
     const { rows } = await client.query(
       `SELECT * FROM crystal_isles_steamids WHERE steam_id = '${steamId}';`,
-      )
+    )
     await client.end()
     console.log("Disconnected from db")
     return rows
@@ -25,7 +25,7 @@ exports.selectSteamId = async (steamId) => {
 exports.insertSteamId = async (steamId) => {
   const client = new Client({
     connectionTimeoutMillis: 50000,
-    connectionString: process.env.DATABASE_URL
+    connectionString: process.env.DATABASE_URL,
   })
   console.log("connecting to db")
   try {
@@ -41,4 +41,8 @@ exports.insertSteamId = async (steamId) => {
     await client.end()
     throw new Error(error)
   }
+}
+
+exports.deleteSteamId = async (steamId) => {
+  throw new Error("Not yet implemented")
 }
