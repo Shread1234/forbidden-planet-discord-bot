@@ -34,7 +34,8 @@ bot.on("message", async (message) => {
       const [_, steamId] = message.content.split(" ")
       console.log("steamID", steamId)
       const channelName = message.channel.name
-      // const serverCheck = await checkSteamId(steamId, channelName)
+      const serverCheck = await checkSteamId(steamId, channelName)
+      console.log(serverCheck)
       // if: throw error and message channel
       // else continue
       // add id to correct table for map

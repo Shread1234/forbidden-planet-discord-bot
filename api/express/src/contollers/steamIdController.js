@@ -1,13 +1,13 @@
 const { selectSteamId, insertSteamId } = require("../models/steamIdModel")
 
 exports.getSteamId = async (req, res) => {
-  const { steamId, server } = req.query
+  const { steamId, tableName } = req.query
   if (!steamId.length) {
     res.status(400).send("Invalid Steam ID")
     return
   }
   try {
-    const selectResult = await selectSteamId(steamId, server)
+    const selectResult = await selectSteamId(steamId, tableName)
     if (!selectResult.length) {
       res.status(200).send("Steam ID not found")
       return
@@ -20,14 +20,14 @@ exports.getSteamId = async (req, res) => {
 }
 
 exports.postSteamId = async (req, res) => {
-  const { steamId, server } = req.query
+  const { steamId, tableName } = req.query
   if (!steamId.length) {
     res.status(400).send("Invalid Steam ID")
     return
   }
   try {
-    await insertSteamId(steamId, server)
-    res.status(200).send(`Steam id ${steamId} was successfully added to the ${server} database.`)
+    await insertSteamId(steamId, tableName)
+    res.status(200).send(`Steam id ${steamId} was successfully added to the ${tableName} database.`)
   } catch (error) {
     res.status(400).send(error)
   }

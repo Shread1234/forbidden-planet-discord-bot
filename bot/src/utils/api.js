@@ -19,12 +19,12 @@ function getTableName(channelName) {
 
 exports.checkSteamId = async (steamId, channelName) => {
   const tableName = getTableName(channelName)
-  return await axios.get(`${baseUrl}steamid?steamId=${steamId}server=${tableName}`)
+  return await axios.get(`${baseUrl}steamid?steamId=${steamId}tableName=${tableName}`)
 }
 
 exports.insertSteamId = async (steamId, channelName) => {
   const tableName = getTableName(channelName)
-  return await axios.post(`${baseUrl}steamid?steamId=${steamId}server=${tableName}`)
+  return await axios.post(`${baseUrl}steamid?steamId=${steamId}tableName=${tableName}`)
 }
 
 exports.removeSteamId = async (steamId, channelName) => {
