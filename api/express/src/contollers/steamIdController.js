@@ -1,15 +1,5 @@
 const { selectSteamId, insertSteamId } = require("../models/steamIdModel")
 
-const serverToTableMapping = {
-  "crystal isles": "crystal_isles_steamids",
-  ragnarok: "ragnarok_steamids",
-  abberation: "abberation_steamids",
-  extinction: "extinction_steamids",
-  genesis: "genesis_steamids",
-  valguero: "valguero_steamids",
-  test: "test_steamids",
-}
-
 exports.getSteamId = async (req, res) => {
   const { steamId, server } = req.query
   if (!steamId.length) {

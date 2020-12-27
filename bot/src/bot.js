@@ -1,15 +1,23 @@
-require("dotenv").config({ path: `${__dirname}/../.env` })
+require("dotenv").config({ path: `${__dirname}/../../.env` })
 const { connectAndSendPoints } = require("./rcon")
 const { checkSteamId } = require("./utils/api")
 const Discord = require("discord.js")
 
 const bot = new Discord.Client()
 
-const botListeningChannel = "dev-test-steamid"
+const botListeningChannels = [
+  "『💫』𝘼𝙗𝙗𝙚𝙧𝙖𝙩𝙞𝙤𝙣",
+  "『⚡』𝙀𝙭𝙩𝙞𝙣𝙘𝙩𝙞𝙤𝙣",
+  "『🌌』𝙂𝙚𝙣𝙚𝙨𝙞𝙨",
+  "『🌋』𝙍𝙖𝙜𝙣𝙖𝙧𝙤𝙠",
+  "『🌴』𝙑𝙖𝙡𝙜𝙪𝙚𝙧𝙤",
+  "『💎』𝘾𝙧𝙮𝙨𝙩𝙖𝙡-𝙄𝙨𝙡𝙚𝙨",
+  "test-server",
+  "『🐉』𝘾𝙚𝙣𝙩𝙚𝙧",
+]
 
 function correctMessageChannel(channelName) {
-  console.log("channelName", channelName)
-  return channelName === botListeningChannel
+  return botListeningChannels.includes(channelName)
 }
 
 bot.on("ready", () => {
@@ -20,15 +28,17 @@ bot.on("message", async (message) => {
   if (!correctMessageChannel(message.channel.name)) {
     return
   }
-  if (message.content.includes("devtest")) {
+  if (message.content.includes("!points")) {
     try {
-      console.log(message.content)
-      const [_, server, steamId] = message.content.split(" ")
-      const serverCheck = await checkSteamId(steamId, server)
+      message.channel.send(`Channel detected as ${message.channel.name}`)
+      const [_, steamId] = message.content.split(" ")
+      console.log("steamID", steamId)
+      const channelName = message.channel.name
+      // const serverCheck = await checkSteamId(steamId, channelName)
       // if: throw error and message channel
-      console.log("serverCheck", serverCheck)
       // else continue
       // add id to correct table for map
+      await connectAndSendPoints(steamId, channelName)
       message.channel.send("test complete")
     } catch (error) {
       console.log(error)

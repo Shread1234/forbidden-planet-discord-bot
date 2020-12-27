@@ -43,6 +43,6 @@ exports.insertSteamId = async (steamId) => {
   }
 }
 
-exports.deleteSteamId = async (steamId) => {
+exports.omitSteamId = async (steamId) => {
   throw new Error("Not yet implemented")
 }
