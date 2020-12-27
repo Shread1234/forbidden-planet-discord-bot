@@ -30,17 +30,22 @@ bot.on("message", async (message) => {
   }
   if (message.content.includes("!points")) {
     try {
-      message.channel.send(`Channel detected as ${message.channel.name}`)
       const [_, steamId] = message.content.split(" ")
       console.log("steamID", steamId)
       const channelName = message.channel.name
-      const serverCheck = await checkSteamId(steamId, channelName)
-      console.log(serverCheck)
-      // if: throw error and message channel
-      // else continue
-      // add id to correct table for map
+      const { data } = await checkSteamId(steamId, channelName)
+      if (data !== "Steam ID not found") {
+        message.channel.send(
+          `Steam id: ${
+            data[0].steam_id
+          } already recieved their points for ${channelName} on ${new Date(
+            data[0].created_at,
+          )}. If you have deleted your character and require points, please contact SkEeZ or Shread.`,
+        )
+        return
+      }
       await connectAndSendPoints(steamId, channelName)
-      message.channel.send("test complete")
+      message.channel.send(`Enjoy your points ${message.author.username}!`)
     } catch (error) {
       console.log(error)
       message.channel.send(
