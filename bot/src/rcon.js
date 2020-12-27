@@ -18,13 +18,13 @@ async function giveSteamIDPoints(steamId, server) {
     server.end()
     throw error
   })
-  console.log("connecting...")
+  console.log(`connecting to RCON server...`)
   await server.connect()
-  console.log("connected!")
+  console.log(`connected to RCON server!`)
   const command = `ScriptCommand TCsAR AddArcTotal ${steamId} 5000`
   console.log(`Sending command: ${command}`)
   await server.send(command)
-  console.log("command successful")
+  console.log(`command successful for ${steamId} on RCON server`)
   server.end()
 }
 

@@ -28,10 +28,9 @@ bot.on("message", async (message) => {
   if (!correctMessageChannel(message.channel.name)) {
     return
   }
-  if (message.content.includes("!points")) {
+  if (/^!points\s\d{16,17}$/.test(message.content)) {
     try {
       const [_, steamId] = message.content.split(" ")
-      console.log("steamID", steamId)
       const channelName = message.channel.name
       const { data } = await checkSteamId(steamId, channelName)
       if (data !== "Steam ID not found") {
