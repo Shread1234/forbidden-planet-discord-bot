@@ -1,6 +1,6 @@
 require("dotenv").config({ path: `${__dirname}/../../.env` })
 const { connectAndSendPoints } = require("./rcon")
-const { checkSteamId } = require("./utils/api")
+const { checkSteamId, insertSteamId } = require("./utils/api")
 const Discord = require("discord.js")
 
 const bot = new Discord.Client()
