@@ -38,7 +38,7 @@ bot.on("message", async (message) => {
         message.channel.send(
           `Steam id: ${
             data[0].steam_id
-          } already recieved their points for ${channelName} on ${new Date(
+          } already received their points for ${channelName} on ${new Date(
             data[0].created_at,
           )}. If you have deleted your character and require points, please contact SkEeZ or Shread.`,
         )
