@@ -1,10 +1,19 @@
-const { selectSteamId, insertSteamId } = require("../models/steamIdModel")
+const { selectSteamId, insertSteamId, sendAllSteamIds } = require("../models/steamIdModel")
 
 exports.getSteamId = async (req, res) => {
   const { steamId, tableName } = req.query
   if (!steamId.length) {
     res.status(400).send("Invalid Steam ID")
     return
+  }
+  if (steamId === "all") {
+    try {
+      const result = await sendAllSteamIds(tableName)
+      res.status(200).send(result)
+    } catch (error) {
+      res.status(400).send(error)
+      return
+    }
   }
   try {
     const selectResult = await selectSteamId(steamId, tableName)

@@ -20,6 +20,25 @@ exports.selectSteamId = async (steamId, tableName) => {
   }
 }
 
+exports.sendAllSteamIds = async (tableName) => {
+  const client = new Client({
+    connectionTimeoutMillis: 50000,
+    connectionString: process.env.DATABASE_URL,
+  })
+  console.log("connecting to db")
+  try {
+    await client.connect()
+    console.log("connected to db")
+    const { rows } = await client.query(`SELECT * FROM ${tableName};`)
+    await client.end()
+    console.log("Disconnected from db")
+    return rows
+  } catch (error) {
+    await client.end()
+    throw new Error(error)
+  }
+}
+
 exports.insertSteamId = async (steamId, tableName) => {
   const client = new Client({
     connectionTimeoutMillis: 50000,
