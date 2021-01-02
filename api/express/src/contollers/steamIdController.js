@@ -3,42 +3,40 @@ const { selectSteamId, insertSteamId, sendAllSteamIds } = require("../models/ste
 exports.getSteamId = async (req, res) => {
   const { steamId, tableName } = req.query
   if (!steamId.length) {
-    res.status(400).send("Invalid Steam ID")
-    return
+    return res.status(400).send("Invalid Steam ID")
   }
   if (steamId === "all") {
     try {
       const result = await sendAllSteamIds(tableName)
-      res.status(200).send(result)
+      return res.status(200).send(result)
     } catch (error) {
-      res.status(400).send(error)
-      return
+      return res.status(400).send(error)
     }
   }
   try {
     const selectResult = await selectSteamId(steamId, tableName)
     if (!selectResult.length) {
-      res.status(200).send("Steam ID not found")
-      return
+      return res.status(200).send("Steam ID not found")
     } else {
-      res.status(200).send(selectResult)
+      return res.status(200).send(selectResult)
     }
   } catch (error) {
-    res.status(400).send(error)
+    return res.status(400).send(error)
   }
 }
 
 exports.postSteamId = async (req, res) => {
   const { steamId, tableName } = req.query
   if (!steamId.length) {
-    res.status(400).send("Invalid Steam ID")
-    return
+    return res.status(400).send("Invalid Steam ID")
   }
   try {
     await insertSteamId(steamId, tableName)
-    res.status(200).send(`Steam id ${steamId} was successfully added to the ${tableName} database.`)
+    return res
+      .status(200)
+      .send(`Steam id ${steamId} was successfully added to the ${tableName} database.`)
   } catch (error) {
-    res.status(400).send(error)
+    return res.status(400).send(error)
   }
 }
 
