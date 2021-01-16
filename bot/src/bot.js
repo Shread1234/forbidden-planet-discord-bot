@@ -43,8 +43,8 @@ bot.on("message", async (message) => {
         )
         return
       }
-      await insertSteamId(steamId, channelName)
       await connectAndSendPoints(steamId, channelName)
+      await insertSteamId(steamId, channelName)
       message.channel.send(`Enjoy your points ${message.author.username}!`)
     } catch (error) {
       console.log(error)
