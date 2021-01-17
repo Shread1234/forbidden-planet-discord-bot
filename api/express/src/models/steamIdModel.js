@@ -15,6 +15,7 @@ exports.selectSteamId = async (steamId, tableName) => {
     console.log("Disconnected from db")
     return rows
   } catch (error) {
+    console.log("LOG ERROR", error)
     await client.end()
     throw new Error(error)
   }
