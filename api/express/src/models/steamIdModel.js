@@ -4,7 +4,7 @@ const { Client } = require("pg")
 exports.selectSteamId = async (steamId, tableName) => {
   const client = new Client({
     connectionTimeoutMillis: 50000,
-    connectionString: process.env.DATABASE_URL,
+    connectionString: `${process.env.DATABASE_URL}?ssl=true`,
   })
   console.log("connecting to db")
   try {
@@ -15,7 +15,6 @@ exports.selectSteamId = async (steamId, tableName) => {
     console.log("Disconnected from db")
     return rows
   } catch (error) {
-    console.log("LOG ERROR", error)
     await client.end()
     throw new Error(error)
   }
