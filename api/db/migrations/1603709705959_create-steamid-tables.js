@@ -62,15 +62,15 @@ exports.up = (pgm) => {
         notNull: true,
         default: pgm.func("current_timestamp"),
       },
+    }),
+    pgm.createTable("island_steamids", {
+      steam_id: "varchar(1000)",
+      created_at: {
+        type: "timestamp",
+        notNull: true,
+        default: pgm.func("current_timestamp"),
+      },
     })
-  pgm.createTable("island_steamids", {
-    steam_id: "varchar(1000)",
-    created_at: {
-      type: "timestamp",
-      notNull: true,
-      default: pgm.func("current_timestamp"),
-    },
-  })
 }
 
 exports.down = (pgm) => {
