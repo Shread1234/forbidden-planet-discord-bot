@@ -82,5 +82,5 @@ exports.down = (pgm) => {
     pgm.dropTable("valguero_steamids"),
     pgm.dropTable("test_steamids"),
     pgm.dropTable("center_steamids"),
-    pgm.createTable("island_steamids")
+    pgm.dropTable("island_steamids")
 }
