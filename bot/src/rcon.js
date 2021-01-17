@@ -10,6 +10,7 @@ const channelToServerNameMapping = {
   "『💎』𝘾𝙧𝙮𝙨𝙩𝙖𝙡-𝙄𝙨𝙡𝙚𝙨": "RCON_CRYSTAL_PORT",
   "test-server": "RCON_TEST_PORT",
   "『🐉』𝘾𝙚𝙣𝙩𝙚𝙧": "RCON_CENTER_PORT",
+  "『🌲』𝙄𝙨𝙡𝙖𝙣𝙙": "RCON_ISLAND_PORT",
 }
 
 async function giveSteamIDPoints(steamId, server) {

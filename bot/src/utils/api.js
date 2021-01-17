@@ -9,6 +9,7 @@ const channelToTableNameMapping = {
   "『💎』𝘾𝙧𝙮𝙨𝙩𝙖𝙡-𝙄𝙨𝙡𝙚𝙨": "crystal_isles_steamids",
   "test-server": "test_steamids",
   "『🐉』𝘾𝙚𝙣𝙩𝙚𝙧": "center_steamids",
+  "『🌲』𝙄𝙨𝙡𝙖𝙣𝙙": "island_steamids",
 }
 
 const baseUrl = "https://forbidden-planet.herokuapp.com/api/"

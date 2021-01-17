@@ -63,6 +63,14 @@ exports.up = (pgm) => {
         default: pgm.func("current_timestamp"),
       },
     })
+  pgm.createTable("island_steamids", {
+    steam_id: "varchar(1000)",
+    created_at: {
+      type: "timestamp",
+      notNull: true,
+      default: pgm.func("current_timestamp"),
+    },
+  })
 }
 
 exports.down = (pgm) => {
@@ -73,5 +81,6 @@ exports.down = (pgm) => {
     pgm.dropTable("genesis_steamids"),
     pgm.dropTable("valguero_steamids"),
     pgm.dropTable("test_steamids"),
-    pgm.dropTable("center_steamids")
+    pgm.dropTable("center_steamids"),
+    pgm.createTable("island_steamids")
 }

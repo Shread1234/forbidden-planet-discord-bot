@@ -14,6 +14,7 @@ const botListeningChannels = [
   "『💎』𝘾𝙧𝙮𝙨𝙩𝙖𝙡-𝙄𝙨𝙡𝙚𝙨",
   "test-server",
   "『🐉』𝘾𝙚𝙣𝙩𝙚𝙧",
+  "『🌲』𝙄𝙨𝙡𝙖𝙣𝙙",
 ]
 
 function correctMessageChannel(channelName) {
